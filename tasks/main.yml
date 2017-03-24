@@ -17,4 +17,4 @@
 
 - name: Install python packages
   become: yes
-  pip: name=docker-py version=1.7.0 state=present
+  pip: name=docker-py state=present
