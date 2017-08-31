@@ -1,2 +1,2 @@
 ---
-# vars file for docker
+docker_compose_version: 1.16.0-rc2

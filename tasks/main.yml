@@ -1,4 +1,7 @@
 ---
+- name: abcd
+  debug: msg=hello
+
 - name: Install for debian
   when: ansible_os_family == "Debian"
   become: yes
@@ -18,3 +21,14 @@
 - name: Install python packages
   become: yes
   pip: name=docker-py state=present
+
+- name: Don't have docker-compose from pip
+  become: true
+  pip: name=docker-compose state=absent
+
+- name: Install docker-compose from URL
+  become: true
+  get_url:
+      url: "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-{{ansible_system}}-{{ansible_machine}}"
+      dest: /usr/local/bin/docker-compose
+      mode: 0755
