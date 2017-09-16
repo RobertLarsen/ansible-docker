@@ -1,7 +1,4 @@
 ---
-- name: abcd
-  debug: msg=hello
-
 - name: Install for debian
   when: ansible_os_family == "Debian"
   become: yes
