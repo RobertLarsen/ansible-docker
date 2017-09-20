@@ -22,13 +22,6 @@
   become: yes
   pip: name=docker-py state=present
 
-- name: Don't have docker-compose from pip
+- name: Do have docker-compose from pip
   become: true
-  pip: name=docker-compose state=absent
-
-- name: Install docker-compose from URL
-  become: true
-  get_url:
-      url: "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-{{ansible_system}}-{{ansible_machine}}"
-      dest: /usr/local/bin/docker-compose
-      mode: 0755
+  pip: name=docker-compose state=present
