@@ -17,7 +17,7 @@
 
 - name: Install python packages
   become: yes
-  pip: name=docker-py state=present
+  pip: name=docker state=present
 
 - name: Do have docker-compose from pip
   become: true
