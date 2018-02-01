@@ -1,13 +1,7 @@
 ---
-- name: Install for debian
-  when: ansible_os_family == "Debian"
-  become: yes
-  include: debian.yml
-
-- name: Install for redhat
-  when: ansible_os_family == "RedHat"
-  become: yes
-  include: redhat.yml
+- name: Run distro specific tasks
+  become: true
+  include_tasks: "{{ansible_os_family|lower}}.yml"
 
 - name: Add user to docker group
   become: yes
