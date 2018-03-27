@@ -4,13 +4,13 @@
   include_tasks: "{{ansible_os_family|lower}}.yml"
 
 - name: Add user to docker group
-  become: yes
+  become: true
   user: name="{{ansible_user_id}}"
         groups=docker
         append=yes
 
 - name: Install python packages
-  become: yes
+  become: true
   pip: name=docker state=present
 
 - name: Do have docker-compose from pip
