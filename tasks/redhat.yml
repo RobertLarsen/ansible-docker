@@ -1,18 +1,22 @@
 ---
 - name: Add yum repository for docker
+  become: true
   yum_repository: name=docker
                   description="Docker yum repository"
                   gpgkey=https://yum.dockerproject.org/gpg
                   baseurl="https://yum.dockerproject.org/repo/main/{{ansible_distribution|lower}}/{{ansible_distribution_major_version}}"
 
 - name: Install packages
+  become: true
   yum: name="{{item}}" state=present update_cache=yes
   with_items:
       - epel-release
       - docker-engine
 
 - name: Install python pip
+  become: true
   yum: name=python-pip state=present update_cache=yes
 
 - name: Start docker engine at boot
+  become: true
   systemd: name=docker enabled=yes state=started
