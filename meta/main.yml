@@ -1,7 +1,7 @@
 galaxy_info:
   author: Robert Larsen <robert@the-playground.dk>
   description: Installs and runs the docker daemon
-  company: 
+  company: None
   license: GPLv2
   min_ansible_version: 2.2
   platforms:
