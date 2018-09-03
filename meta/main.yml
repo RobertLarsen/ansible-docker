@@ -11,3 +11,5 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
+  galaxy_tags: []
+dependencies:
