@@ -11,5 +11,6 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
-  galaxy_tags: []
+  galaxy_tags:
+      - docker
 dependencies: []
