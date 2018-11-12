@@ -8,14 +8,12 @@
 
 - name: Install packages
   become: true
-  yum: name="{{item}}" state=present update_cache=yes
-  with_items:
+  yum:
+      update_cache: yes
+      name:
       - epel-release
       - docker-engine
-
-- name: Install python pip
-  become: true
-  yum: name=python-pip state=present update_cache=yes
+      - python-pip
 
 - name: Start docker engine at boot
   become: true
