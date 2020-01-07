@@ -12,6 +12,7 @@
 
 - name: Add docker apt key
   become: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 20
   apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
       state: present
@@ -25,14 +26,22 @@
 
 - name: Add apt repository for docker
   become: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 20
   apt_repository:
       repo: "deb [arch={{arch}}] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
       state: present
 
 - name: Install docker
   become: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 20
   apt:
       name: docker-ce 
+
+- name: Install docker
+  become: true
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 20
+  apt:
+      name: docker.io
 
 - name: Don't have docker-compose from apt
   become: true
